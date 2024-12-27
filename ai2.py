@@ -180,7 +180,7 @@ def best_place(board, stone):
     else:  # 終盤は完全読み
         return full_search(board, stone)
 
-class EagerAI(object):
+class WeareteamAI(object):
     def face(self):
         return "🦁"
 
