@@ -81,6 +81,24 @@ def evaluate_board(board, stone):
                 score += EVALUATION_TABLE[y][x]
             elif board[y][x] == (3 - stone):
                 score -= EVALUATION_TABLE[y][x]
+
+    # 安定石の評価
+    def is_stable(x, y):
+        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        for dx, dy in directions:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < len(board[0]) and 0 <= ny < len(board):
+                if board[ny][nx] == 0:
+                    return False
+        return True
+
+    for y in range(len(board)):
+        for x in range(len(board[0])):
+            if board[y][x] == stone and is_stable(x, y):
+                score += 50
+            elif board[y][x] == (3 - stone) and is_stable(x, y):
+                score -= 50
+
     return score
 
 def get_valid_moves(board, stone):
