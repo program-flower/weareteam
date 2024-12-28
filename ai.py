@@ -225,11 +225,11 @@ def best_place(board, stone):
     stone: 現在のプレイヤーの石 (1: 黒, 2: 白)
     """
     empty_cells = sum(row.count(0) for row in board)
-    if empty_cells > 20:  # 序盤では探索深さを16に設定
-        _, move = minimax(board, stone, depth=16, maximizing=True)
-        return move
-    elif empty_cells > 10:  # 中盤では探索深さを32に設定
+    if empty_cells > 20:  # 序盤では探索深さを32に設定
         _, move = minimax(board, stone, depth=32, maximizing=True)
+        return move
+    elif empty_cells > 10:  # 中盤では探索深さを128に設定
+        _, move = minimax(board, stone, depth=128, maximizing=True)
         return move
     else:  # 終盤
         # 必勝読みを優先
