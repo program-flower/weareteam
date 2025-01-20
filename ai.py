@@ -140,7 +140,7 @@ def minimax(board, stone, depth, maximizing_player, alpha=-math.inf, beta=math.i
         cache[(board_tuple, stone, depth, maximizing_player)] = min_eval
         return min_eval
 
-# tulip クラス
+# weareteam クラス
 class weareteam:
 
     def name(self):
