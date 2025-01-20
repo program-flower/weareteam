@@ -141,10 +141,10 @@ def minimax(board, stone, depth, maximizing_player, alpha=-math.inf, beta=math.i
         return min_eval
 
 # tulip クラス
-class tulip:
+class weareteam:
 
     def name(self):
-        return "tulip"
+        return "weareteam"
 
     def face(self):
         return "🌷"
