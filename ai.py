@@ -140,14 +140,14 @@ def minimax(board, stone, depth, maximizing_player, alpha=-math.inf, beta=math.i
         cache[(board_tuple, stone, depth, maximizing_player)] = min_eval
         return min_eval
 
-# weareteam クラス
-class weareteam:
+# tulip クラス
+class tulip:
 
     def name(self):
-        return "weareteam"
+        return "tulip"
 
     def face(self):
-        return "🍳"
+        return "🌷"
 
     def place(self, board, stone):
         valid_moves = get_valid_moves(board, stone)
@@ -159,7 +159,11 @@ class weareteam:
 
         # 残りの手数に応じて探索深度を動的に変更
         remaining_moves = sum(row.count(0) for row in board)
-        depth = 4 if remaining_moves > 15 else 6
+
+        if remaining_moves <= 10:
+            depth = remaining_moves  # 終盤では完全読み
+        else:
+            depth = 6 if remaining_moves > 15 else 8
 
         for x, y in valid_moves:
             temp_board = apply_move(board, stone, x, y)
